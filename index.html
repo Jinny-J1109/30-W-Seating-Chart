@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Office Seating Chart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">
+      <h1>Office Seating Chart</h1>
+    </div>
+    <div class="header-right">
+      <a href="admin.html" class="btn-admin">Edit Seating</a>
+    </div>
+  </div>
+
+  <div class="chart-container" id="chart-container">
+    <div id="svg-wrapper"></div>
+  </div>
+
+  <div class="tooltip hidden" id="tooltip">
+    <div class="tooltip-photo-wrap">
+      <img id="tooltip-photo" src="" alt="" />
+      <div class="tooltip-initials" id="tooltip-initials"></div>
+    </div>
+    <div class="tooltip-info">
+      <div class="tooltip-name" id="tooltip-name"></div>
+      <div class="tooltip-title" id="tooltip-title"></div>
+      <div class="tooltip-contact">
+        <span id="tooltip-email"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

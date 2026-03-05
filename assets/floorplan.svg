@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 960" style="font-family:-apple-system,sans-serif">
+
+  <!-- ── Background ── -->
+  <rect width="1500" height="960" fill="#f4f3f0"/>
+
+  <!-- ── Outer Wall ── -->
+  <rect x="40" y="40" width="1420" height="880" fill="#faf9f6" stroke="#1a1a1a" stroke-width="3"/>
+
+  <!-- ── Left: Conference Room ── -->
+  <rect x="40" y="40" width="280" height="400" fill="#f0ede6" stroke="#1a1a1a" stroke-width="1.5"/>
+  <!-- Conference table -->
+  <rect x="90" y="120" width="180" height="240" rx="6" fill="#e8e4da" stroke="#a09a8e" stroke-width="1"/>
+  <text x="180" y="460" text-anchor="middle" font-size="8" fill="#a09a8e" letter-spacing="0.12em" font-weight="400" text-transform="uppercase">CONFERENCE</text>
+
+  <!-- ── Left: Meeting Room ── -->
+  <rect x="40" y="480" width="280" height="440" fill="#f0ede6" stroke="#1a1a1a" stroke-width="1.5"/>
+  <!-- Meeting table -->
+  <rect x="80" y="560" width="200" height="120" rx="4" fill="#e8e4da" stroke="#a09a8e" stroke-width="1"/>
+  <text x="180" y="900" text-anchor="middle" font-size="8" fill="#a09a8e" letter-spacing="0.12em" font-weight="400">MEETING ROOM</text>
+
+  <!-- ── Divider between left rooms ── -->
+  <line x1="40" y1="480" x2="320" y2="480" stroke="#1a1a1a" stroke-width="1.5"/>
+
+  <!-- ── Right wall of left section (corridor) ── -->
+  <line x1="320" y1="40" x2="320" y2="920" stroke="#1a1a1a" stroke-width="1.5"/>
+
+  <!-- ── Open Office Label ── -->
+  <text x="910" y="72" text-anchor="middle" font-size="8" fill="#a09a8e" letter-spacing="0.16em" font-weight="400">OPEN OFFICE</text>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- ── Desks — Row 1 (y=110) ── -->
+  <!-- ══════════════════════════════════════════════ -->
+
+  <rect id="desk-01" x="360" y="110" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-02" x="520" y="110" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-03" x="680" y="110" width="130" height="75" rx="2" class="desk-shape"/>
+
+  <!-- gap -->
+
+  <rect id="desk-04" x="880" y="110" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-05" x="1040" y="110" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-06" x="1200" y="110" width="130" height="75" rx="2" class="desk-shape"/>
+
+  <!-- ── Row 2 (y=230) ── -->
+  <rect id="desk-07" x="360" y="240" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-08" x="520" y="240" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-09" x="680" y="240" width="130" height="75" rx="2" class="desk-shape"/>
+
+  <rect id="desk-10" x="880" y="240" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-11" x="1040" y="240" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-12" x="1200" y="240" width="130" height="75" rx="2" class="desk-shape"/>
+
+  <!-- ── Horizontal aisle ── -->
+  <line x1="330" y1="430" x2="1460" y2="430" stroke="#d4d0c8" stroke-width="0.5" stroke-dasharray="8,6"/>
+
+  <!-- ── Row 3 (y=480) ── -->
+  <rect id="desk-13" x="360" y="480" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-14" x="520" y="480" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-15" x="680" y="480" width="130" height="75" rx="2" class="desk-shape"/>
+
+  <rect id="desk-16" x="880" y="480" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-17" x="1040" y="480" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-18" x="1200" y="480" width="130" height="75" rx="2" class="desk-shape"/>
+
+  <!-- ── Row 4 (y=600) ── -->
+  <rect id="desk-19" x="360" y="610" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-20" x="520" y="610" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-21" x="680" y="610" width="130" height="75" rx="2" class="desk-shape"/>
+
+  <rect id="desk-22" x="880" y="610" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-23" x="1040" y="610" width="130" height="75" rx="2" class="desk-shape"/>
+  <rect id="desk-24" x="1200" y="610" width="130" height="75" rx="2" class="desk-shape"/>
+
+  <!-- ── Bottom: Printer / Breakout area ── -->
+  <rect x="360" y="760" width="300" height="140" rx="2" fill="#ede9df" stroke="#b8b2a6" stroke-width="1"/>
+  <text x="510" y="835" text-anchor="middle" font-size="8" fill="#a09a8e" letter-spacing="0.10em">BREAKOUT</text>
+
+  <!-- ── Bottom: Storage ── -->
+  <rect x="1050" y="760" width="370" height="140" rx="2" fill="#ede9df" stroke="#b8b2a6" stroke-width="1"/>
+  <text x="1235" y="835" text-anchor="middle" font-size="8" fill="#a09a8e" letter-spacing="0.10em">STORAGE</text>
+
+</svg>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Seating — Admin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">
+      <h1>Edit Seating</h1>
+    </div>
+    <div class="header-right">
+      <a href="index.html" class="btn-admin">View Chart</a>
+    </div>
+  </div>
+
+  <div class="admin-layout">
+
+    <div class="admin-sidebar">
+      <div class="admin-sidebar-header">Employees</div>
+      <div class="employee-list" id="employee-list"></div>
+      <div class="admin-actions">
+        <div class="status-msg" id="status-msg"></div>
+        <button class="btn-save" id="btn-save">Save Changes</button>
+        <button class="btn-export" id="btn-export">Export JSON</button>
+      </div>
+    </div>
+
+    <div class="admin-map">
+      <div id="svg-wrapper"></div>
+    </div>
+
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

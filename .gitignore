@@ -1,0 +1,18 @@
+# CAD / 3D files (large binaries — store separately)
+*.3dm
+*.dwg
+*.dxf
+*.rvt
+*.rfa
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.code-workspace
+
+# Misc folders
+JJ/

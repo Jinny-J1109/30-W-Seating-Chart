@@ -1,0 +1,202 @@
+[
+  {
+    "id": "emp-001",
+    "name": "Alex Chen",
+    "title": "Principal Architect",
+    "email": "alex.chen@firm.com",
+    "phone": "+1 555-0101",
+    "desk": "desk-01",
+    "photo": "assets/photos/alex-chen.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-002",
+    "name": "Maya Patel",
+    "title": "Senior Architect",
+    "email": "maya.patel@firm.com",
+    "phone": "+1 555-0102",
+    "desk": "desk-02",
+    "photo": "assets/photos/maya-patel.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-003",
+    "name": "Jordan Lee",
+    "title": "Project Architect",
+    "email": "jordan.lee@firm.com",
+    "phone": "+1 555-0103",
+    "desk": "desk-03",
+    "photo": "assets/photos/jordan-lee.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-004",
+    "name": "Sofia Rossi",
+    "title": "Interior Designer",
+    "email": "sofia.rossi@firm.com",
+    "phone": "+1 555-0104",
+    "desk": "desk-04",
+    "photo": "assets/photos/sofia-rossi.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-005",
+    "name": "Marcus Webb",
+    "title": "Structural Engineer",
+    "email": "marcus.webb@firm.com",
+    "phone": "+1 555-0105",
+    "desk": "desk-05",
+    "photo": "assets/photos/marcus-webb.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-006",
+    "name": "Priya Nair",
+    "title": "Urban Planner",
+    "email": "priya.nair@firm.com",
+    "phone": "+1 555-0106",
+    "desk": "desk-06",
+    "photo": "assets/photos/priya-nair.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-007",
+    "name": "Daniel Kim",
+    "title": "Architectural Designer",
+    "email": "daniel.kim@firm.com",
+    "phone": "+1 555-0107",
+    "desk": "desk-07",
+    "photo": "assets/photos/daniel-kim.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-008",
+    "name": "Lucia Moreno",
+    "title": "Project Manager",
+    "email": "lucia.moreno@firm.com",
+    "phone": "+1 555-0108",
+    "desk": "desk-08",
+    "photo": "assets/photos/lucia-moreno.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-009",
+    "name": "Thomas Berg",
+    "title": "Landscape Architect",
+    "email": "thomas.berg@firm.com",
+    "phone": "+1 555-0109",
+    "desk": "desk-09",
+    "photo": "assets/photos/thomas-berg.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-010",
+    "name": "Aisha Johnson",
+    "title": "BIM Coordinator",
+    "email": "aisha.johnson@firm.com",
+    "phone": "+1 555-0110",
+    "desk": "desk-10",
+    "photo": "assets/photos/aisha-johnson.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-011",
+    "name": "Ryan Torres",
+    "title": "Architectural Designer",
+    "email": "ryan.torres@firm.com",
+    "phone": "+1 555-0111",
+    "desk": "desk-11",
+    "photo": "assets/photos/ryan-torres.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-012",
+    "name": "Elena Vasquez",
+    "title": "Sustainability Consultant",
+    "email": "elena.vasquez@firm.com",
+    "phone": "+1 555-0112",
+    "desk": "desk-12",
+    "photo": "assets/photos/elena-vasquez.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-013",
+    "name": "James Park",
+    "title": "Junior Architect",
+    "email": "james.park@firm.com",
+    "phone": "+1 555-0113",
+    "desk": "desk-13",
+    "photo": "assets/photos/james-park.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-014",
+    "name": "Nina Schulz",
+    "title": "Technical Architect",
+    "email": "nina.schulz@firm.com",
+    "phone": "+1 555-0114",
+    "desk": "desk-14",
+    "photo": "assets/photos/nina-schulz.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-015",
+    "name": "Omar Hassan",
+    "title": "Design Associate",
+    "email": "omar.hassan@firm.com",
+    "phone": "+1 555-0115",
+    "desk": "desk-15",
+    "photo": "assets/photos/omar-hassan.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-016",
+    "name": "Claire Dubois",
+    "title": "Senior Interior Designer",
+    "email": "claire.dubois@firm.com",
+    "phone": "+1 555-0116",
+    "desk": "desk-16",
+    "photo": "assets/photos/claire-dubois.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-017",
+    "name": "David Okafor",
+    "title": "Architectural Technologist",
+    "email": "david.okafor@firm.com",
+    "phone": "+1 555-0117",
+    "desk": "desk-17",
+    "photo": "assets/photos/david-okafor.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-018",
+    "name": "Sara Lindqvist",
+    "title": "Urban Designer",
+    "email": "sara.lindqvist@firm.com",
+    "phone": "+1 555-0118",
+    "desk": "desk-18",
+    "photo": "assets/photos/sara-lindqvist.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-019",
+    "name": "Kevin Zhao",
+    "title": "Junior Designer",
+    "email": "kevin.zhao@firm.com",
+    "phone": "+1 555-0119",
+    "desk": null,
+    "photo": "assets/photos/kevin-zhao.jpg",
+    "profileUrl": "#"
+  },
+  {
+    "id": "emp-020",
+    "name": "Fatima Al-Rashid",
+    "title": "Office Manager",
+    "email": "fatima.alrashid@firm.com",
+    "phone": "+1 555-0120",
+    "desk": null,
+    "photo": "assets/photos/fatima-alrashid.jpg",
+    "profileUrl": "#"
+  }
+]

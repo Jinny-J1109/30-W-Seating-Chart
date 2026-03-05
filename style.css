@@ -1,0 +1,328 @@
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f4f3f0;
+  --surface: #ffffff;
+  --border: #d4d0c8;
+  --text: #1a1a1a;
+  --text-muted: #6b6b6b;
+  --accent: #1e3a5f;
+  --accent-light: #e8eef5;
+  --desk-fill: #faf9f6;
+  --desk-stroke: #a09a8e;
+  --wall: #1a1a1a;
+  --tag-bg: rgba(255,255,255,0.92);
+  --tag-border: #c8c2b8;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.10);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+  --radius: 4px;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header h1 {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.btn-admin {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  letter-spacing: 0.04em;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-admin:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ── Chart Container ── */
+.chart-container {
+  padding: 32px;
+  overflow: auto;
+}
+
+#svg-wrapper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  box-shadow: var(--shadow-sm);
+  display: inline-block;
+  min-width: 100%;
+}
+
+#svg-wrapper svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ── SVG Floor Plan Styles ── */
+.layer-walls path,
+.layer-walls rect,
+.layer-walls line,
+.layer-walls polyline,
+.layer-walls polygon {
+  stroke: var(--wall);
+}
+
+.desk-shape {
+  fill: var(--desk-fill);
+  stroke: var(--desk-stroke);
+  stroke-width: 1;
+  cursor: pointer;
+  transition: fill 0.15s;
+}
+.desk-shape:hover,
+.desk-shape.active {
+  fill: var(--accent-light);
+  stroke: var(--accent);
+}
+
+/* ── Name Tags (SVG elements) ── */
+.name-tag {
+  cursor: pointer;
+}
+.name-tag-bg {
+  fill: var(--tag-bg);
+  stroke: var(--tag-border);
+  stroke-width: 0.8;
+}
+.name-tag-text {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 500;
+  fill: var(--text);
+  pointer-events: none;
+  letter-spacing: 0.02em;
+}
+.name-tag:hover .name-tag-bg {
+  fill: var(--accent-light);
+  stroke: var(--accent);
+}
+.name-tag:hover .name-tag-text {
+  fill: var(--accent);
+}
+
+/* ── Room Labels ── */
+.room-label {
+  font-family: var(--font);
+  font-size: 9px;
+  fill: #a09a8e;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 400;
+  pointer-events: none;
+}
+
+/* ── Tooltip ── */
+.tooltip {
+  position: fixed;
+  background: var(--text);
+  color: #fff;
+  border-radius: 6px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+  z-index: 999;
+  box-shadow: var(--shadow-md);
+  max-width: 220px;
+  transition: opacity 0.1s;
+}
+.tooltip.hidden { opacity: 0; }
+
+.tooltip-photo-wrap {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tooltip-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+.tooltip-photo-wrap img.loaded { display: block; }
+.tooltip-initials {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.tooltip-info { flex: 1; min-width: 0; }
+.tooltip-name {
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tooltip-title {
+  font-size: 11px;
+  color: #aaa;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tooltip-contact {
+  font-size: 10px;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* ── Admin Page ── */
+.admin-layout {
+  display: flex;
+  height: calc(100vh - 57px);
+}
+
+.admin-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.admin-sidebar-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.employee-list {
+  overflow-y: auto;
+  flex: 1;
+  padding: 8px;
+}
+
+.employee-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  cursor: grab;
+  border: 1px solid transparent;
+  transition: background 0.1s, border-color 0.1s;
+  font-size: 13px;
+  user-select: none;
+}
+.employee-item:hover { background: var(--bg); border-color: var(--border); }
+.employee-item.dragging { opacity: 0.4; }
+.employee-item.unassigned { color: var(--text-muted); }
+
+.emp-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  letter-spacing: 0.03em;
+}
+
+.emp-info { min-width: 0; }
+.emp-name { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.emp-desk { font-size: 11px; color: var(--text-muted); }
+
+.admin-map {
+  flex: 1;
+  overflow: auto;
+  padding: 32px;
+  background: var(--bg);
+}
+
+.admin-actions {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-save {
+  width: 100%;
+  padding: 9px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.15s;
+}
+.btn-save:hover { background: #162d4a; }
+
+.btn-export {
+  width: 100%;
+  padding: 8px;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  font-size: 12px;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: background 0.15s;
+}
+.btn-export:hover { background: var(--accent-light); }
+
+.drop-target { outline: 2px dashed var(--accent); outline-offset: 3px; }
+.status-msg {
+  font-size: 11px;
+  color: #4caf50;
+  text-align: center;
+  min-height: 16px;
+}
