@@ -44,36 +44,80 @@ function renderNameTags(svg, employees) {
     g.classList.add('name-tag');
     g.setAttribute('data-emp-id', emp.id);
 
-    // Text first (need it in DOM to measure)
+    // Font size capped to fit within desk dimensions
+    const fullName = emp.name.trim();
+    const parts = fullName.split(' ');
+    const firstName = parts[0];
+    const lastName = parts.slice(1).join(' ');
+    const longestPart = Math.max(firstName.length, lastName.length || 0);
+    const maxFontByWidth = bbox.width * 0.72 / (longestPart * 0.62);
+    const fontSize = Math.min(bbox.height * 0.35, maxFontByWidth);
+    const lineHeight = fontSize * 1.3;
+
+    // Use one line if the full name fits within desk width at this font size
+    const estimatedFullWidth = fullName.length * 0.62 * fontSize;
+    const useSingleLine = !lastName || estimatedFullWidth <= bbox.width * 0.88;
+
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     text.setAttribute('x', cx);
-    text.setAttribute('y', cy + 4);
+    text.setAttribute('y', cy);
     text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('font-size', fontSize);
+    text.setAttribute('font-family', 'Arial, sans-serif');
     text.classList.add('name-tag-text');
-    text.textContent = emp.name;
 
+    if (useSingleLine) {
+      const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+      tspan.setAttribute('x', cx);
+      tspan.setAttribute('dy', '0');
+      tspan.textContent = fullName;
+      text.appendChild(tspan);
+    } else {
+      const tspan1 = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+      tspan1.setAttribute('x', cx);
+      tspan1.setAttribute('dy', '0');
+      tspan1.textContent = firstName;
+
+      const tspan2 = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+      tspan2.setAttribute('x', cx);
+      tspan2.setAttribute('dy', lineHeight);
+      tspan2.textContent = lastName;
+
+      text.appendChild(tspan1);
+      text.appendChild(tspan2);
+    }
     g.appendChild(text);
     svg.appendChild(g);
 
-    // Measure then add background
     requestAnimationFrame(() => {
       const tb = text.getBBox();
-      const px = 6, py = 3;
+
+      // Shift text so its visual center aligns exactly with desk center
+      const offsetX = cx - (tb.x + tb.width / 2);
+      const offsetY = cy - (tb.y + tb.height / 2);
+      text.setAttribute('transform', `translate(${offsetX}, ${offsetY})`);
+
+      // Button rect centered at desk center
+      const px = fontSize * 0.5, py = fontSize * 0.3;
+      const maxW = bbox.width * 0.88;
+      const maxH = bbox.height * 0.84;
+      const btnW = Math.min(tb.width + px * 2, maxW);
+      const btnH = Math.min(tb.height + py * 2, maxH);
 
       const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-      rect.setAttribute('x', tb.x - px);
-      rect.setAttribute('y', tb.y - py);
-      rect.setAttribute('width', tb.width + px * 2);
-      rect.setAttribute('height', tb.height + py * 2);
-      rect.setAttribute('rx', '3');
+      rect.setAttribute('x', cx - btnW / 2);
+      rect.setAttribute('y', cy - btnH / 2);
+      rect.setAttribute('width', btnW);
+      rect.setAttribute('height', btnH);
+      rect.setAttribute('rx', fontSize * 0.4);
       rect.classList.add('name-tag-bg');
 
       g.insertBefore(rect, text);
-    });
 
-    g.addEventListener('mouseenter', e => showTooltip(e, emp));
-    g.addEventListener('mousemove', e => moveTooltip(e));
-    g.addEventListener('mouseleave', hideTooltip);
+      g.addEventListener('mouseenter', e => showTooltip(e, emp));
+      g.addEventListener('mouseleave', hideTooltip);
+      g.addEventListener('mousemove', e => moveTooltip(e));
+    });
     g.addEventListener('click', () => {
       if (emp.profileUrl && emp.profileUrl !== '#') {
         window.location.href = emp.profileUrl;

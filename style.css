@@ -86,18 +86,70 @@ body {
 }
 
 /* ── SVG Floor Plan Styles ── */
-.layer-walls path,
-.layer-walls rect,
-.layer-walls line,
-.layer-walls polyline,
-.layer-walls polygon {
-  stroke: var(--wall);
+
+/* Fix Rhino SVG export: strokes are tiny in a huge coordinate space.
+   vector-effect: non-scaling-stroke makes stroke-width pixel-based. */
+#svg-wrapper svg path,
+#svg-wrapper svg line,
+#svg-wrapper svg polyline,
+#svg-wrapper svg rect,
+#svg-wrapper svg circle,
+#svg-wrapper svg ellipse {
+  vector-effect: non-scaling-stroke;
+}
+
+/* Walls */
+#svg-wrapper #walls path,
+#svg-wrapper #walls line,
+#svg-wrapper #walls polyline,
+#svg-wrapper #walls rect {
+  stroke: rgb(70, 70, 70);
+  stroke-width: 0.2px;
+}
+
+/* Columns */
+#svg-wrapper #columns path,
+#svg-wrapper #columns rect {
+  stroke: rgb(160, 160, 160);
+  stroke-width: 2px;
+  fill: rgb(160, 160, 160);
+}
+
+/* Desks */
+#svg-wrapper #employeedesk path,
+#svg-wrapper #employeedesk rect,
+#svg-wrapper #employeedesk polyline {
+  stroke: #6b6560;
+  stroke-width: 1px;
+  fill: #faf9f6;
+}
+
+/* Furniture — lighter */
+#svg-wrapper #furniture path,
+#svg-wrapper #furniture rect,
+#svg-wrapper #furniture line,
+#svg-wrapper #furniture polyline,
+#svg-wrapper #furniture circle,
+#svg-wrapper #furniture ellipse {
+  stroke: #b0aa9e;
+  stroke-width: 0.75px;
+  fill: none;
+}
+
+/* Chairs — lightest */
+#svg-wrapper #Chairs path,
+#svg-wrapper #Chairs line,
+#svg-wrapper #Chairs polyline,
+#svg-wrapper #Chairs circle,
+#svg-wrapper #Chairs ellipse {
+  stroke: #c8c2b8;
+  stroke-width: 0.5px;
+  fill: none;
 }
 
 .desk-shape {
   fill: var(--desk-fill);
   stroke: var(--desk-stroke);
-  stroke-width: 1;
   cursor: pointer;
   transition: fill 0.15s;
 }
@@ -110,26 +162,23 @@ body {
 /* ── Name Tags (SVG elements) ── */
 .name-tag {
   cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.18s ease;
+}
+.name-tag:hover {
+  transform: scale(1.18);
 }
 .name-tag-bg {
-  fill: var(--tag-bg);
-  stroke: var(--tag-border);
-  stroke-width: 0.8;
+  fill: transparent;
+  stroke: none;
+  pointer-events: all;
 }
 .name-tag-text {
-  font-family: var(--font);
-  font-size: 11px;
-  font-weight: 500;
-  fill: var(--text);
+  font-weight: 700;
+  fill: #3d2b14;
   pointer-events: none;
   letter-spacing: 0.02em;
-}
-.name-tag:hover .name-tag-bg {
-  fill: var(--accent-light);
-  stroke: var(--accent);
-}
-.name-tag:hover .name-tag-text {
-  fill: var(--accent);
 }
 
 /* ── Room Labels ── */
@@ -320,6 +369,47 @@ body {
 .btn-export:hover { background: var(--accent-light); }
 
 .drop-target { outline: 2px dashed var(--accent); outline-offset: 3px; }
+
+/* ── Trash Zone ── */
+.trash-zone {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #fff;
+  border: 2px dashed #c0392b;
+  border-radius: 8px;
+  color: #c0392b;
+  font-size: 13px;
+  font-weight: 500;
+  z-index: 500;
+  pointer-events: all;
+  transition: background 0.15s, border-color 0.15s;
+}
+.trash-zone.visible { display: flex; }
+.trash-zone.over {
+  background: #fdecea;
+  border-color: #922b21;
+  color: #922b21;
+}
+.trash-icon { font-size: 18px; }
+
+.drag-label {
+  position: fixed;
+  background: var(--accent);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  pointer-events: none;
+  z-index: 1000;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
 .status-msg {
   font-size: 11px;
   color: #4caf50;
