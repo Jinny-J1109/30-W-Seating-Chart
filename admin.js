@@ -199,14 +199,20 @@ function renderAllTags() {
     const parts = fullName.split(' ');
     const firstName = parts[0];
     const lastName = parts.slice(1).join(' ');
-    const longestPart = Math.max(firstName.length, lastName.length || 0);
-    const maxFontByWidth = bbox.width * 0.72 / (longestPart * 0.62);
-    const fontSize = Math.min(bbox.height * 0.35, maxFontByWidth);
-    const lineHeight = fontSize * 1.3;
 
-    // Use one line if the full name fits within desk width at this font size
-    const estimatedFullWidth = fullName.length * 0.62 * fontSize;
-    const useSingleLine = !lastName || estimatedFullWidth <= bbox.width * 0.88;
+    // Compute best font size for each layout, pick whichever is larger
+    const longestPart = Math.max(firstName.length, lastName.length || 0);
+    const fontSizeTwoLine = lastName ? Math.min(
+      bbox.height * 0.35,
+      bbox.width * 0.72 / (longestPart * 0.62)
+    ) : 0;
+    const fontSizeOneLine = Math.min(
+      bbox.height * 0.45,
+      bbox.width * 0.80 / (fullName.length * 0.62)
+    );
+    const useSingleLine = !lastName || fontSizeOneLine >= fontSizeTwoLine;
+    const fontSize = useSingleLine ? fontSizeOneLine : fontSizeTwoLine;
+    const lineHeight = fontSize * 1.3;
 
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     text.setAttribute('x', cx);

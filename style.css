@@ -85,6 +85,15 @@ body {
   height: auto;
 }
 
+/* ── Room label text — same font as name tags ── */
+#svg-wrapper svg > text {
+  font-family: Arial, sans-serif;
+  text-transform: uppercase;
+  transform: scale(0.75);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
 /* ── SVG Floor Plan Styles ── */
 
 /* Fix Rhino SVG export: strokes are tiny in a huge coordinate space.

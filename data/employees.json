@@ -1,202 +1,470 @@
 [
   {
     "id": "emp-001",
-    "name": "Alex Chen",
-    "title": "Principal Architect",
-    "email": "alex.chen@firm.com",
-    "phone": "+1 555-0101",
-    "desk": "desk-01",
-    "photo": "assets/photos/alex-chen.jpg",
-    "profileUrl": "#"
+    "name": "Azimbek Ibraev",
+    "title": "",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/9F7BF997-B023-4DC0-A402-FDAC7AC2DCCC/azimbek-ibraev"
   },
   {
     "id": "emp-002",
-    "name": "Maya Patel",
-    "title": "Senior Architect",
-    "email": "maya.patel@firm.com",
-    "phone": "+1 555-0102",
-    "desk": "desk-02",
-    "photo": "assets/photos/maya-patel.jpg",
-    "profileUrl": "#"
+    "name": "Ben Johnson",
+    "title": "Director, Project Management",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/72C992B5-1777-4272-9192-E8B30080474E/ben-johnson"
   },
   {
     "id": "emp-003",
-    "name": "Jordan Lee",
-    "title": "Project Architect",
-    "email": "jordan.lee@firm.com",
-    "phone": "+1 555-0103",
-    "desk": "desk-03",
-    "photo": "assets/photos/jordan-lee.jpg",
-    "profileUrl": "#"
+    "name": "Boram Oh",
+    "title": "Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/06705C9B-E623-4D3B-B31B-9D79B93FE9B8/boram-oh"
   },
   {
     "id": "emp-004",
-    "name": "Sofia Rossi",
-    "title": "Interior Designer",
-    "email": "sofia.rossi@firm.com",
-    "phone": "+1 555-0104",
-    "desk": "desk-04",
-    "photo": "assets/photos/sofia-rossi.jpg",
-    "profileUrl": "#"
+    "name": "Chris Drew",
+    "title": "Director of Sustainability",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/A9AEB5D5-F730-444A-A986-33B8F79E76DA/chris-drew"
   },
   {
     "id": "emp-005",
-    "name": "Marcus Webb",
-    "title": "Structural Engineer",
-    "email": "marcus.webb@firm.com",
-    "phone": "+1 555-0105",
-    "desk": "desk-05",
-    "photo": "assets/photos/marcus-webb.jpg",
-    "profileUrl": "#"
+    "name": "Chrisper Liu",
+    "title": "Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/5164DC15-7D28-4ABF-AFA6-243FD3CF2C20/chrisper-liu"
   },
   {
     "id": "emp-006",
-    "name": "Priya Nair",
-    "title": "Urban Planner",
-    "email": "priya.nair@firm.com",
-    "phone": "+1 555-0106",
-    "desk": "desk-06",
-    "photo": "assets/photos/priya-nair.jpg",
-    "profileUrl": "#"
+    "name": "Clint Bautz",
+    "title": "",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/924DAC52-7FF6-4467-AF10-527CCE90E5F2/clint-bautz"
   },
   {
     "id": "emp-007",
-    "name": "Daniel Kim",
-    "title": "Architectural Designer",
-    "email": "daniel.kim@firm.com",
-    "phone": "+1 555-0107",
-    "desk": "desk-07",
-    "photo": "assets/photos/daniel-kim.jpg",
-    "profileUrl": "#"
+    "name": "Daniel Tangaro",
+    "title": "Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/DE8D8943-20E2-48EA-957A-B74BBA39E28D/daniel-tangaro"
   },
   {
     "id": "emp-008",
-    "name": "Lucia Moreno",
-    "title": "Project Manager",
-    "email": "lucia.moreno@firm.com",
-    "phone": "+1 555-0108",
-    "desk": "desk-08",
-    "photo": "assets/photos/lucia-moreno.jpg",
-    "profileUrl": "#"
+    "name": "Dean Mueller",
+    "title": "IT Director",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/C053F694-CD7D-4ED6-A324-E5D5649064D3/dean-mueller"
   },
   {
     "id": "emp-009",
-    "name": "Thomas Berg",
-    "title": "Landscape Architect",
-    "email": "thomas.berg@firm.com",
-    "phone": "+1 555-0109",
-    "desk": "desk-09",
-    "photo": "assets/photos/thomas-berg.jpg",
-    "profileUrl": "#"
+    "name": "Deric Criss",
+    "title": "IT System Administrator",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/146B183A-5C66-45A5-A693-CB8CAF93A5FE/deric-criss"
   },
   {
     "id": "emp-010",
-    "name": "Aisha Johnson",
-    "title": "BIM Coordinator",
-    "email": "aisha.johnson@firm.com",
-    "phone": "+1 555-0110",
-    "desk": "desk-10",
-    "photo": "assets/photos/aisha-johnson.jpg",
-    "profileUrl": "#"
+    "name": "Fei Xu",
+    "title": "Design Director",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/FF363D0D-60E7-4C79-9BFF-572E5C6904C0/fei-xu"
   },
   {
     "id": "emp-011",
-    "name": "Ryan Torres",
-    "title": "Architectural Designer",
-    "email": "ryan.torres@firm.com",
-    "phone": "+1 555-0111",
-    "desk": "desk-11",
-    "photo": "assets/photos/ryan-torres.jpg",
-    "profileUrl": "#"
+    "name": "Felix Griggs",
+    "title": "Interiors",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/B31C4D30-B592-4DCD-8CE5-2E9A6E572354/felix-griggs"
   },
   {
     "id": "emp-012",
-    "name": "Elena Vasquez",
-    "title": "Sustainability Consultant",
-    "email": "elena.vasquez@firm.com",
-    "phone": "+1 555-0112",
-    "desk": "desk-12",
-    "photo": "assets/photos/elena-vasquez.jpg",
-    "profileUrl": "#"
+    "name": "Gordon Gill",
+    "title": "Partner",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/8F6BBDA8-A740-4E9D-9545-1F8AABC281C1/gordon-gill"
   },
   {
     "id": "emp-013",
-    "name": "James Park",
-    "title": "Junior Architect",
-    "email": "james.park@firm.com",
-    "phone": "+1 555-0113",
-    "desk": "desk-13",
-    "photo": "assets/photos/james-park.jpg",
-    "profileUrl": "#"
+    "name": "Gregory Barber",
+    "title": "Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/8E8099CA-B2CE-4D1D-82A1-37F0A8D06877/gregory-barber"
   },
   {
     "id": "emp-014",
-    "name": "Nina Schulz",
-    "title": "Technical Architect",
-    "email": "nina.schulz@firm.com",
-    "phone": "+1 555-0114",
-    "desk": "desk-14",
-    "photo": "assets/photos/nina-schulz.jpg",
-    "profileUrl": "#"
+    "name": "Griffin Pemberton",
+    "title": "Designer",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/03EB7BF9-7016-443D-9C52-571C425F381F/griffin-pemberton"
   },
   {
     "id": "emp-015",
-    "name": "Omar Hassan",
-    "title": "Design Associate",
-    "email": "omar.hassan@firm.com",
-    "phone": "+1 555-0115",
-    "desk": "desk-15",
-    "photo": "assets/photos/omar-hassan.jpg",
-    "profileUrl": "#"
+    "name": "James Deane",
+    "title": "Director of Sustainability",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/0346F51F-45BC-435C-8BBF-7F2A2D6B68FD/james-deane"
   },
   {
     "id": "emp-016",
-    "name": "Claire Dubois",
-    "title": "Senior Interior Designer",
-    "email": "claire.dubois@firm.com",
-    "phone": "+1 555-0116",
-    "desk": "desk-16",
-    "photo": "assets/photos/claire-dubois.jpg",
-    "profileUrl": "#"
+    "name": "Jerry Huang",
+    "title": "Senior Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/C9BD5E39-0565-482C-9B83-34398FADC9DD/jerry-huang"
   },
   {
     "id": "emp-017",
-    "name": "David Okafor",
-    "title": "Architectural Technologist",
-    "email": "david.okafor@firm.com",
-    "phone": "+1 555-0117",
-    "desk": "desk-17",
-    "photo": "assets/photos/david-okafor.jpg",
-    "profileUrl": "#"
+    "name": "Jinny Jiang",
+    "title": "Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/EF393296-6645-49B1-9DB9-EDB3B0E3F3DB/jinny-jiang"
   },
   {
     "id": "emp-018",
-    "name": "Sara Lindqvist",
-    "title": "Urban Designer",
-    "email": "sara.lindqvist@firm.com",
-    "phone": "+1 555-0118",
-    "desk": "desk-18",
-    "photo": "assets/photos/sara-lindqvist.jpg",
-    "profileUrl": "#"
+    "name": "Juan Betancur",
+    "title": "Partner",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/CF57D5D5-AD32-42B2-9955-6C5E413A181A/juan-betancur"
   },
   {
     "id": "emp-019",
-    "name": "Kevin Zhao",
-    "title": "Junior Designer",
-    "email": "kevin.zhao@firm.com",
-    "phone": "+1 555-0119",
+    "name": "Karly Novy",
+    "title": "Designer",
+    "email": "",
     "desk": null,
-    "photo": "assets/photos/kevin-zhao.jpg",
-    "profileUrl": "#"
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/8BEBF5D0-A4EB-4528-B841-BF76E056ED3A/karly-novy"
   },
   {
     "id": "emp-020",
-    "name": "Fatima Al-Rashid",
-    "title": "Office Manager",
-    "email": "fatima.alrashid@firm.com",
-    "phone": "+1 555-0120",
+    "name": "Kathleen Fanning",
+    "title": "Chief Financial Officer",
+    "email": "",
     "desk": null,
-    "photo": "assets/photos/fatima-alrashid.jpg",
-    "profileUrl": "#"
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/5F72DCC4-8D15-4497-9194-E5C25EC2E21A/kathleen-fanning"
+  },
+  {
+    "id": "emp-021",
+    "name": "Katrina Fernandez Nova",
+    "title": "Director, Project Management",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/72BAEE03-1BF2-448D-ABB4-BCE3DD570552/katrina-fernandez-nova"
+  },
+  {
+    "id": "emp-022",
+    "name": "Kimberly Medici",
+    "title": "Executive Assistant",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/B056E5C3-01BE-4E54-BB42-32F149617A54/kimberly-medici"
+  },
+  {
+    "id": "emp-023",
+    "name": "Lara Tekneyan",
+    "title": "Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/5F7A0241-FAD6-4595-8BEA-ECF836AA0F14/lara-tekneyan"
+  },
+  {
+    "id": "emp-024",
+    "name": "Lucy Drew",
+    "title": "Administration",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/71450AA1-FEA6-44D3-9DE9-D9290AC28B2E/lucy-drew"
+  },
+  {
+    "id": "emp-025",
+    "name": "Luis Palacio",
+    "title": "Design Director",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/100C4652-718A-4B23-A35F-97F15431C762/luis-palacio"
+  },
+  {
+    "id": "emp-026",
+    "name": "Megan Gritzke",
+    "title": "Office Administrator",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/1B6F0D75-A452-4392-B3C3-AD32A906A252/megan-gritzke"
+  },
+  {
+    "id": "emp-027",
+    "name": "Melanie Skidmore",
+    "title": "Senior Project Accountant",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/ABB7BB61-CFD1-4038-A3CB-9738CFA19238/melanie-skidmore"
+  },
+  {
+    "id": "emp-028",
+    "name": "Melissa Marrero",
+    "title": "Senior Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/CA60FF31-6950-41F4-874D-F7270F6F14A5/melissa-marrero"
+  },
+  {
+    "id": "emp-029",
+    "name": "Melissa Venoy",
+    "title": "Director, Technical Design",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/1DC4C8C7-7408-4FF5-B59D-778C995570D1/melissa-venoy"
+  },
+  {
+    "id": "emp-030",
+    "name": "Michael Schoemaker",
+    "title": "Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/CDD24D96-7075-40AC-B6BE-A1BF6BD65335/michael-schoemaker"
+  },
+  {
+    "id": "emp-031",
+    "name": "Michelle Swanson",
+    "title": "Director, Technical Design",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/519189F9-AAB8-4D36-A536-DBF58F17FCF8/michelle-swanson"
+  },
+  {
+    "id": "emp-032",
+    "name": "Mohammed Qtaishat",
+    "title": "Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/45D23667-F976-4F67-A937-35498986ECCB/mohammed-qtaishat"
+  },
+  {
+    "id": "emp-033",
+    "name": "Nathan Diestelkamp",
+    "title": "Senior Designer",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/848E1835-98C9-4448-B954-C3309FA6A810/nathan-diestelkamp"
+  },
+  {
+    "id": "emp-034",
+    "name": "Nathaniel Staniak",
+    "title": "Designer",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/39C205C8-C573-40F0-951B-90C1A54BE75A/nathaniel-staniak"
+  },
+  {
+    "id": "emp-035",
+    "name": "Nicholas Berchtold",
+    "title": "Model Shop",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/DAAD64C2-BD83-4F00-B8DB-C05DA7DFD453/nicholas-berchtold"
+  },
+  {
+    "id": "emp-036",
+    "name": "Nick Stetkevych",
+    "title": "Designer",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/E151C2B7-97DA-47E4-93BF-DB24F1A5DB93/nick-stetkevych"
+  },
+  {
+    "id": "emp-037",
+    "name": "Pamela Pan",
+    "title": "Designer",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/4AF147ED-9DCE-42C4-9FE2-9CCE5A2FFBDD/pamela-pan"
+  },
+  {
+    "id": "emp-038",
+    "name": "Peter Loayza",
+    "title": "Designer",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/8A0AC9F0-0F1C-4D4A-B816-E6D8784CC6D6/peter-loayza"
+  },
+  {
+    "id": "emp-039",
+    "name": "Peter Weismantle",
+    "title": "Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/96C27116-A59C-4FF9-A2EB-37CB8C1BF77E/peter-weismantle"
+  },
+  {
+    "id": "emp-040",
+    "name": "Rebecca Cryder",
+    "title": "Senior Interior Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/36F249A9-494F-4F5A-ADEE-AB22B334A88C/rebecca-cryder"
+  },
+  {
+    "id": "emp-041",
+    "name": "Richard Wilson",
+    "title": "Director of Urban Design",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/C9F3ECFF-81B9-48B7-B248-F25D90EF8746/richard-wilson"
+  },
+  {
+    "id": "emp-042",
+    "name": "Robert Forest",
+    "title": "Partner",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/58DC2F0E-8EF1-40EB-B96B-C73A61F4CFC7/robert-forest"
+  },
+  {
+    "id": "emp-043",
+    "name": "Ryan Kukuraitis",
+    "title": "Senior Designer",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/DD7EDB44-5CE5-4FB7-8ED9-BD2ACF11453D/ryan-kukuraitis"
+  },
+  {
+    "id": "emp-044",
+    "name": "Sakshi Pitre",
+    "title": "Designer",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/737AF442-F1E5-4EC9-B693-DC51351BB611/sakshi-pitre"
+  },
+  {
+    "id": "emp-045",
+    "name": "Terysa Wojnar",
+    "title": "Payroll, Benefits, HR, Payables",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/E3A478C7-7990-457E-BE8E-21E918E9A5B4/terysa-wojnar"
+  },
+  {
+    "id": "emp-046",
+    "name": "Thomas Schneider",
+    "title": "Senior Designer",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/345C3292-2D19-4771-8F92-32B5BAE117A3/thomas-schneider"
+  },
+  {
+    "id": "emp-047",
+    "name": "Tian Tian",
+    "title": "Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/B927656B-F48D-4372-9E86-228095385434/tian-tian"
+  },
+  {
+    "id": "emp-048",
+    "name": "Tobi Fagbule",
+    "title": "Sustainability",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/4D3E4436-14EB-4DCB-8016-22D9BCACC365/tobi-fagbule"
+  },
+  {
+    "id": "emp-049",
+    "name": "Vrittany Salais",
+    "title": "Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/5D1DD837-718C-407F-8836-356E7B83BDD7/vrittany-salais"
+  },
+  {
+    "id": "emp-050",
+    "name": "Weiwei Luo",
+    "title": "Director, Project Management + Chinese Operations",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/C12B22D2-1AD5-4936-8E88-37A4A6AE192E/weiwei-luo"
+  },
+  {
+    "id": "emp-051",
+    "name": "Yibin Yang",
+    "title": "Architect",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/128842B3-461C-4911-A8F6-4BEEEE819839/yibin-yang"
+  },
+  {
+    "id": "emp-052",
+    "name": "Yue Zhu",
+    "title": "Director, Technical Design",
+    "email": "",
+    "desk": null,
+    "photo": "",
+    "profileUrl": "https://core.smithgill.com/employee/648789A4-06B7-46BD-8F8B-9049188F7B19/yue-zhu"
   }
 ]
