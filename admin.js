@@ -34,6 +34,15 @@ async function init() {
   renderSidebar();
   renderAllTags();
 
+  // Fit viewBox tightly to the plan content
+  requestAnimationFrame(() => {
+    const bb = svg.getBBox();
+    const pad = 500;
+    svg.setAttribute('viewBox', `${bb.x - pad} ${bb.y - pad} ${bb.width + pad * 2} ${bb.height + pad * 2}`);
+    svg.removeAttribute('width');
+    svg.removeAttribute('height');
+  });
+
   document.getElementById('btn-save').addEventListener('click', saveChanges);
   document.getElementById('btn-export').addEventListener('click', exportJSON);
 }
