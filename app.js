@@ -135,7 +135,7 @@ function renderNameTags(svg, employees) {
     });
     g.addEventListener('click', () => {
       if (emp.profileUrl && emp.profileUrl !== '#') {
-        window.location.href = emp.profileUrl;
+        window.open(emp.profileUrl, '_blank');
       }
     });
 
@@ -145,7 +145,7 @@ function renderNameTags(svg, employees) {
     deskEl.addEventListener('mouseleave', hideTooltip);
     deskEl.addEventListener('click', () => {
       if (emp.profileUrl && emp.profileUrl !== '#') {
-        window.location.href = emp.profileUrl;
+        window.open(emp.profileUrl, '_blank');
       }
     });
   });
