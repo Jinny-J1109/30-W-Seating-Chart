@@ -176,7 +176,7 @@ body {
   transition: transform 0.18s ease;
 }
 .name-tag:hover {
-  transform: scale(1.18);
+  transform: scale(2);
 }
 .name-tag-bg {
   fill: transparent;
