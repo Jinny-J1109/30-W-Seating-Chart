@@ -206,23 +206,23 @@ body {
   position: fixed;
   background: var(--text);
   color: #fff;
-  border-radius: 6px;
-  padding: 12px 14px;
+  border-radius: 5px;
+  padding: 7px 10px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   pointer-events: none;
   z-index: 999;
   box-shadow: var(--shadow-md);
-  max-width: 220px;
+  max-width: 180px;
   transition: opacity 0.1s;
 }
 .tooltip.hidden { opacity: 0; }
 
 .tooltip-photo-wrap {
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   overflow: hidden;
   background: #444;
@@ -238,7 +238,7 @@ body {
 }
 .tooltip-photo-wrap img.loaded { display: block; }
 .tooltip-initials {
-  font-size: 15px;
+  font-size: 11px;
   font-weight: 600;
   color: #fff;
   letter-spacing: 0.04em;
@@ -246,24 +246,24 @@ body {
 
 .tooltip-info { flex: 1; min-width: 0; }
 .tooltip-name {
-  font-size: 26px;
+  font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .tooltip-title {
-  font-size: 11px;
+  font-size: 10px;
   color: #aaa;
-  margin-top: 2px;
+  margin-top: 1px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .tooltip-contact {
-  font-size: 10px;
+  font-size: 9px;
   color: #888;
-  margin-top: 4px;
+  margin-top: 3px;
 }
 
 /* ── Admin Page ── */
