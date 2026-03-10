@@ -1,0 +1,101 @@
+const TENANT_ID = process.env.TENANT_ID;
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const SHAREPOINT_HOST = 'smithgill.sharepoint.com';
+const SITE_PATH = '/sites/ASGGIntranet';
+
+async function getToken() {
+  const res = await fetch(
+    `https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        grant_type: 'client_credentials',
+        client_id: CLIENT_ID,
+        client_secret: CLIENT_SECRET,
+        scope: 'https://graph.microsoft.com/.default'
+      })
+    }
+  );
+  const data = await res.json();
+  return data.access_token;
+}
+
+async function getSiteId(token) {
+  const res = await fetch(
+    `https://graph.microsoft.com/v1.0/sites/${SHAREPOINT_HOST}:${SITE_PATH}`,
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+  const data = await res.json();
+  return data.id;
+}
+
+exports.handler = async (event) => {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+  };
+
+  if (event.httpMethod === 'OPTIONS') {
+    return { statusCode: 200, headers, body: '' };
+  }
+
+  try {
+    const token = await getToken();
+    const siteId = await getSiteId(token);
+    const listUrl = `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/SeatingAssignments`;
+
+    if (event.httpMethod === 'GET') {
+      const res = await fetch(`${listUrl}/items?$expand=fields&$select=fields`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const data = await res.json();
+
+      const assignments = {};
+      (data.value || []).forEach(item => {
+        if (item.fields.DeskID && item.fields.EmployeeID) {
+          assignments[item.fields.DeskID] = item.fields.EmployeeID;
+        }
+      });
+
+      return { statusCode: 200, headers, body: JSON.stringify(assignments) };
+    }
+
+    if (event.httpMethod === 'POST') {
+      const newAssignments = JSON.parse(event.body);
+
+      // Delete all existing items
+      const existingRes = await fetch(`${listUrl}/items?$select=id`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const existingData = await existingRes.json();
+      for (const item of (existingData.value || [])) {
+        await fetch(`${listUrl}/items/${item.id}`, {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${token}` }
+        });
+      }
+
+      // Add new items
+      for (const [deskId, empId] of Object.entries(newAssignments)) {
+        await fetch(`${listUrl}/items`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ fields: { DeskID: deskId, EmployeeID: empId } })
+        });
+      }
+
+      return { statusCode: 200, headers, body: JSON.stringify({ status: 'ok' }) };
+    }
+
+    return { statusCode: 405, headers, body: 'Method not allowed' };
+
+  } catch (err) {
+    return { statusCode: 500, headers, body: JSON.stringify({ error: err.message }) };
+  }
+};

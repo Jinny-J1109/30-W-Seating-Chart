@@ -15,14 +15,20 @@ async function init() {
 
   employees = empData;
 
-  // Apply saved seat assignments from admin panel (if any)
-  const saved = localStorage.getItem('seating-assignments');
-  if (saved) {
-    const assignments = JSON.parse(saved);
-    employees.forEach(emp => {
-      emp.desk = Object.keys(assignments).find(d => assignments[d] === emp.id) || null;
-    });
+  // Load seat assignments from SharePoint (fall back to localStorage)
+  let assignments = {};
+  try {
+    const res = await fetch('/.netlify/functions/assignments');
+    if (res.ok) {
+      assignments = await res.json();
+    }
+  } catch (e) {
+    const saved = localStorage.getItem('seating-assignments');
+    if (saved) assignments = JSON.parse(saved);
   }
+  employees.forEach(emp => {
+    emp.desk = Object.keys(assignments).find(d => assignments[d] === emp.id) || null;
+  });
 
   const wrapper = document.getElementById('svg-wrapper');
   wrapper.innerHTML = svgText;

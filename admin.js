@@ -12,17 +12,19 @@ async function init() {
 
   employees = empData;
 
-  const saved = localStorage.getItem('seating-assignments');
-  if (saved) {
-    assignments = JSON.parse(saved);
-    employees.forEach(emp => {
-      emp.desk = Object.keys(assignments).find(d => assignments[d] === emp.id) || null;
-    });
-  } else {
-    employees.forEach(emp => {
-      if (emp.desk) assignments[emp.desk] = emp.id;
-    });
+  // Load assignments from SharePoint (fall back to localStorage)
+  try {
+    const res = await fetch('/.netlify/functions/assignments');
+    if (res.ok) {
+      assignments = await res.json();
+    }
+  } catch (e) {
+    const saved = localStorage.getItem('seating-assignments');
+    if (saved) assignments = JSON.parse(saved);
   }
+  employees.forEach(emp => {
+    emp.desk = Object.keys(assignments).find(d => assignments[d] === emp.id) || null;
+  });
 
   const wrapper = document.getElementById('svg-wrapper');
   wrapper.innerHTML = svgText;
@@ -322,11 +324,26 @@ function unassignDesk(deskId) {
   renderAllTags();
 }
 
-function saveChanges() {
-  localStorage.setItem('seating-assignments', JSON.stringify(assignments));
+async function saveChanges() {
   const msg = document.getElementById('status-msg');
-  msg.textContent = 'Saved!';
-  setTimeout(() => { msg.textContent = ''; }, 2000);
+  msg.textContent = 'Saving...';
+  try {
+    const res = await fetch('/.netlify/functions/assignments', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(assignments)
+    });
+    if (res.ok) {
+      localStorage.setItem('seating-assignments', JSON.stringify(assignments));
+      msg.textContent = 'Saved!';
+    } else {
+      msg.textContent = 'Save failed — try again';
+    }
+  } catch (e) {
+    localStorage.setItem('seating-assignments', JSON.stringify(assignments));
+    msg.textContent = 'Saved locally (offline)';
+  }
+  setTimeout(() => { msg.textContent = ''; }, 3000);
 }
 
 function exportJSON() {
