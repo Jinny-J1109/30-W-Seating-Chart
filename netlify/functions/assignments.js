@@ -55,9 +55,10 @@ exports.handler = async (event) => {
 
       const assignments = {};
       (data.value || []).forEach(item => {
-        if (item.fields.DeskID && item.fields.EmployeeID) {
-          assignments[item.fields.DeskID] = item.fields.EmployeeID;
-        }
+        // Title is the internal name for the renamed DeskID column
+        const deskId = item.fields.DeskID || item.fields.Title;
+        const empId = item.fields.EmployeeID;
+        if (deskId && empId) assignments[deskId] = empId;
       });
 
       return { statusCode: 200, headers, body: JSON.stringify(assignments) };
@@ -86,7 +87,7 @@ exports.handler = async (event) => {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ fields: { DeskID: deskId, EmployeeID: empId } })
+          body: JSON.stringify({ fields: { Title: deskId, EmployeeID: empId } })
         });
       }
 
