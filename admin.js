@@ -328,10 +328,11 @@ async function saveChanges() {
   const msg = document.getElementById('status-msg');
   msg.textContent = 'Saving...';
   try {
+    const payload = { ...assignments, _lastUpdated: new Date().toISOString() };
     const res = await fetch('/.netlify/functions/assignments', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(assignments)
+      body: JSON.stringify(payload)
     });
     if (res.ok) {
       localStorage.setItem('seating-assignments', JSON.stringify(assignments));

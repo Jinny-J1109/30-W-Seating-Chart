@@ -26,9 +26,18 @@ async function init() {
     const saved = localStorage.getItem('seating-assignments');
     if (saved) assignments = JSON.parse(saved);
   }
+  const lastUpdated = assignments._lastUpdated || null;
+  delete assignments._lastUpdated;
+
   employees.forEach(emp => {
     emp.desk = Object.keys(assignments).find(d => assignments[d] === emp.id) || null;
   });
+
+  if (lastUpdated) {
+    const d = new Date(lastUpdated);
+    document.getElementById('last-updated').textContent =
+      `Last updated: ${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} at ${d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`;
+  }
 
   const wrapper = document.getElementById('svg-wrapper');
   wrapper.innerHTML = svgText;

@@ -54,12 +54,17 @@ exports.handler = async (event) => {
       const data = await res.json();
 
       const assignments = {};
+      let lastUpdated = null;
       (data.value || []).forEach(item => {
-        // Title is the internal name for the renamed DeskID column
         const deskId = item.fields.DeskID || item.fields.Title;
         const empId = item.fields.EmployeeID;
-        if (deskId && empId) assignments[deskId] = empId;
+        if (deskId === '_lastUpdated') {
+          lastUpdated = empId;
+        } else if (deskId && empId) {
+          assignments[deskId] = empId;
+        }
       });
+      if (lastUpdated) assignments._lastUpdated = lastUpdated;
 
       return { statusCode: 200, headers, body: JSON.stringify(assignments) };
     }
@@ -79,7 +84,7 @@ exports.handler = async (event) => {
         });
       }
 
-      // Add new items
+      // Add new items (including _lastUpdated as a special row)
       for (const [deskId, empId] of Object.entries(newAssignments)) {
         await fetch(`${listUrl}/items`, {
           method: 'POST',
