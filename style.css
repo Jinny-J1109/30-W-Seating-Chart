@@ -246,7 +246,7 @@ body {
 
 .tooltip-info { flex: 1; min-width: 0; }
 .tooltip-name {
-  font-size: 13px;
+  font-size: 26px;
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
