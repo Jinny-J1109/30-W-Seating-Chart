@@ -30,6 +30,15 @@ async function init() {
   const svg = wrapper.querySelector('svg');
   applyDeskStyles(svg);
   renderNameTags(svg, employees);
+
+  // Fit viewBox tightly to the plan content
+  requestAnimationFrame(() => {
+    const bb = svg.getBBox();
+    const pad = 500;
+    svg.setAttribute('viewBox', `${bb.x - pad} ${bb.y - pad} ${bb.width + pad * 2} ${bb.height + pad * 2}`);
+    svg.removeAttribute('width');
+    svg.removeAttribute('height');
+  });
 }
 
 function applyDeskStyles(svg) {
