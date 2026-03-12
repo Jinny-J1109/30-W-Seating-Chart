@@ -18,7 +18,7 @@ async function init() {
   // Load seat assignments from SharePoint (fall back to localStorage)
   let assignments = {};
   try {
-    const res = await fetch('/.netlify/functions/assignments');
+    const res = await fetch('/api/assignments');
     if (res.ok) {
       assignments = await res.json();
     }

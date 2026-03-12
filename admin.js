@@ -14,7 +14,7 @@ async function init() {
 
   // Load assignments from SharePoint (fall back to localStorage)
   try {
-    const res = await fetch('/.netlify/functions/assignments');
+    const res = await fetch('/api/assignments');
     if (res.ok) {
       assignments = await res.json();
     }
@@ -329,7 +329,7 @@ async function saveChanges() {
   msg.textContent = 'Saving...';
   try {
     const payload = { ...assignments, _lastUpdated: new Date().toISOString() };
-    const res = await fetch('/.netlify/functions/assignments', {
+    const res = await fetch('/api/assignments', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
