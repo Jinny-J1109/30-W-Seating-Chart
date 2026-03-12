@@ -47,6 +47,9 @@ async function init() {
 
   document.getElementById('btn-save').addEventListener('click', saveChanges);
   document.getElementById('btn-export').addEventListener('click', exportJSON);
+  document.getElementById('employee-search').addEventListener('input', e => {
+    renderSidebar(e.target.value.toLowerCase().trim());
+  });
 }
 
 function getDeskAtPoint(x, y) {
@@ -149,7 +152,7 @@ function setupMouseDrag() {
   });
 }
 
-function renderSidebar() {
+function renderSidebar(filter = '') {
   const list = document.getElementById('employee-list');
   list.innerHTML = '';
 
@@ -159,7 +162,9 @@ function renderSidebar() {
     return a.name.localeCompare(b.name);
   });
 
-  sorted.forEach(emp => {
+  const filtered = filter ? sorted.filter(e => e.name.toLowerCase().includes(filter)) : sorted;
+
+  filtered.forEach(emp => {
     const item = document.createElement('div');
     item.className = 'employee-item' + (emp.desk ? '' : ' unassigned');
     item.draggable = true;
