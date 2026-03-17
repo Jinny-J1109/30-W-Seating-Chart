@@ -57,7 +57,7 @@ async function getGroupMembers(token, groupId) {
 
 function loadOverrides() {
   try {
-    const filePath = path.join(__dirname, '..', '..', 'data', 'employees.json');
+    const filePath = path.join(__dirname, 'overrides.json');
     const raw = fs.readFileSync(filePath, 'utf8');
     const list = JSON.parse(raw);
     const map = {};
