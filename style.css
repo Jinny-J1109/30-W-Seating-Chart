@@ -346,6 +346,26 @@ body {
 .employee-item.dragging { opacity: 0.4; }
 .employee-item.unassigned { color: var(--text-muted); }
 
+.emp-edit-btn {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s, background 0.15s;
+}
+.employee-item:hover .emp-edit-btn { opacity: 1; }
+.emp-edit-btn:hover { background: var(--accent-light); color: var(--accent); }
+
 .emp-avatar {
   width: 28px;
   height: 28px;
@@ -456,4 +476,90 @@ body {
   color: #4caf50;
   text-align: center;
   min-height: 16px;
+}
+
+/* ── Employee Edit Modal ── */
+.emp-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 600;
+  align-items: center;
+  justify-content: center;
+}
+.emp-modal-overlay.visible { display: flex; }
+
+.emp-modal {
+  background: var(--surface);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  width: 360px;
+  max-width: 90vw;
+}
+
+.emp-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.emp-modal-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.emp-modal-close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+}
+.emp-modal-close:hover { color: var(--text); }
+
+.emp-modal-body {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.emp-modal-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+}
+
+.emp-modal-input {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+}
+.emp-modal-input:focus {
+  border-color: var(--accent);
+  background: #fff;
+}
+.emp-modal-input[readonly] {
+  color: var(--text-muted);
+  cursor: default;
+}
+
+.emp-modal-footer {
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
 }

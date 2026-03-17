@@ -8,10 +8,15 @@ const tooltipEmail = document.getElementById('tooltip-email');
 let employees = [];
 
 async function init() {
-  const [svgText, empData] = await Promise.all([
-    fetch('assets/floorplan.svg').then(r => r.text()),
-    fetch('data/employees.json').then(r => r.json())
-  ]);
+  let empData;
+  const svgText = await fetch('assets/floorplan.svg').then(r => r.text());
+  try {
+    const res = await fetch('/api/employees');
+    if (res.ok) empData = await res.json();
+    else throw new Error('API failed');
+  } catch (e) {
+    empData = await fetch('data/employees.json').then(r => r.json());
+  }
 
   employees = empData;
 
@@ -177,8 +182,8 @@ function renderNameTags(svg, employees) {
 
 function showTooltip(e, emp) {
   tooltipName.textContent = emp.name;
-  tooltipTitle.textContent = emp.title;
-  tooltipEmail.textContent = emp.email;
+  tooltipTitle.textContent = emp.title || '';
+  tooltipEmail.textContent = '';
 
   // Initials fallback
   const initials = emp.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();

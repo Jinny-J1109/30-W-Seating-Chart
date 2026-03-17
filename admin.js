@@ -1,14 +1,20 @@
 let employees = [];
 let assignments = {}; // { deskId: empId }
+let profileOverrides = {}; // { empId: profileUrl }
 let svg = null;
 let draggedEmpId = null; // for HTML5 D&D from sidebar
 let mouseDrag = null;    // for mouse-based drag from SVG name tags
 
 async function init() {
-  const [svgText, empData] = await Promise.all([
-    fetch('assets/floorplan.svg').then(r => r.text()),
-    fetch('data/employees.json').then(r => r.json())
-  ]);
+  let empData;
+  const svgText = await fetch('assets/floorplan.svg').then(r => r.text());
+  try {
+    const res = await fetch('/api/employees');
+    if (res.ok) empData = await res.json();
+    else throw new Error('API failed');
+  } catch (e) {
+    empData = await fetch('data/employees.json').then(r => r.json());
+  }
 
   employees = empData;
 
@@ -45,11 +51,32 @@ async function init() {
     svg.removeAttribute('height');
   });
 
+  // Load profile overrides from employees.json
+  try {
+    const overrideData = await fetch('data/employees.json').then(r => r.json());
+    overrideData.forEach(emp => {
+      if (emp.profileUrl) {
+        const match = employees.find(e => e.name.toLowerCase().trim() === emp.name.toLowerCase().trim());
+        if (match) {
+          match.profileUrl = emp.profileUrl;
+          profileOverrides[match.id] = emp.profileUrl;
+        }
+      }
+    });
+  } catch (e) { /* no overrides file */ }
+
   document.getElementById('btn-save').addEventListener('click', saveChanges);
   document.getElementById('btn-export').addEventListener('click', exportJSON);
   document.getElementById('employee-search').addEventListener('input', e => {
     renderSidebar(e.target.value.toLowerCase().trim());
   });
+
+  // Modal close handlers
+  document.getElementById('emp-modal-close').addEventListener('click', closeModal);
+  document.getElementById('emp-modal-overlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeModal();
+  });
+  document.getElementById('emp-modal-save').addEventListener('click', saveModal);
 }
 
 function getDeskAtPoint(x, y) {
@@ -177,6 +204,7 @@ function renderSidebar(filter = '') {
         <div class="emp-name">${emp.name}</div>
         <div class="emp-desk">${emp.desk ? emp.desk : 'Unassigned'}</div>
       </div>
+      <button class="emp-edit-btn" title="Edit profile">&#9998;</button>
     `;
 
     item.addEventListener('dragstart', e => {
@@ -188,6 +216,15 @@ function renderSidebar(filter = '') {
     item.addEventListener('dragend', () => {
       draggedEmpId = null;
       item.classList.remove('dragging');
+    });
+
+    // Click edit button to open edit modal
+    const editBtn = item.querySelector('.emp-edit-btn');
+    editBtn.addEventListener('mousedown', e => e.stopPropagation());
+    editBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      e.preventDefault();
+      openModal(emp);
     });
 
     list.appendChild(item);
@@ -352,10 +389,44 @@ async function saveChanges() {
   setTimeout(() => { msg.textContent = ''; }, 3000);
 }
 
+let modalEmpId = null;
+
+function openModal(emp) {
+  modalEmpId = emp.id;
+  document.getElementById('emp-modal-name').textContent = emp.name;
+  document.getElementById('emp-modal-title-input').value = emp.title || '';
+  document.getElementById('emp-modal-email-input').value = emp.email || '';
+  document.getElementById('emp-modal-url-input').value = emp.profileUrl || '';
+  document.getElementById('emp-modal-overlay').classList.add('visible');
+}
+
+function closeModal() {
+  document.getElementById('emp-modal-overlay').classList.remove('visible');
+  modalEmpId = null;
+}
+
+function saveModal() {
+  if (!modalEmpId) return;
+  const emp = employees.find(e => e.id === modalEmpId);
+  if (!emp) return;
+
+  emp.title = document.getElementById('emp-modal-title-input').value.trim();
+  emp.email = document.getElementById('emp-modal-email-input').value.trim();
+  emp.profileUrl = document.getElementById('emp-modal-url-input').value.trim();
+  profileOverrides[emp.id] = emp.profileUrl;
+
+  closeModal();
+}
+
 function exportJSON() {
   const updated = employees.map(emp => ({
-    ...emp,
-    desk: Object.keys(assignments).find(d => assignments[d] === emp.id) || null
+    id: emp.id,
+    name: emp.name,
+    title: emp.title || '',
+    email: emp.email || '',
+    desk: Object.keys(assignments).find(d => assignments[d] === emp.id) || null,
+    photo: '',
+    profileUrl: emp.profileUrl || ''
   }));
 
   const blob = new Blob([JSON.stringify(updated, null, 2)], { type: 'application/json' });

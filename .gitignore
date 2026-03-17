@@ -16,3 +16,9 @@ desktop.ini
 
 # Misc folders
 JJ/
+
+# Environment variables (secrets)
+.env
+
+# Local Netlify folder
+.netlify

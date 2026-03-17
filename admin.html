@@ -44,6 +44,27 @@
     <span>Drop to unassign</span>
   </div>
 
+  <!-- Employee edit popup -->
+  <div class="emp-modal-overlay" id="emp-modal-overlay">
+    <div class="emp-modal">
+      <div class="emp-modal-header">
+        <span class="emp-modal-title" id="emp-modal-name"></span>
+        <button class="emp-modal-close" id="emp-modal-close">&times;</button>
+      </div>
+      <div class="emp-modal-body">
+        <label class="emp-modal-label">Title</label>
+        <input type="text" class="emp-modal-input" id="emp-modal-title-input" />
+        <label class="emp-modal-label">Email</label>
+        <input type="text" class="emp-modal-input" id="emp-modal-email-input" />
+        <label class="emp-modal-label">Profile URL</label>
+        <input type="text" class="emp-modal-input" id="emp-modal-url-input" placeholder="Paste Synthesis profile URL…" />
+      </div>
+      <div class="emp-modal-footer">
+        <button class="btn-save" id="emp-modal-save">Save</button>
+      </div>
+    </div>
+  </div>
+
   <script src="admin.js"></script>
 </body>
 </html>
