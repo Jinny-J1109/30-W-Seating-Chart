@@ -4,6 +4,8 @@ const path = require('path');
 const TENANT_ID = process.env.TENANT_ID;
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const SHAREPOINT_HOST = 'smithgill.sharepoint.com';
+const SITE_PATH = '/sites/ASGGIntranet';
 
 async function getToken() {
   const res = await fetch(
@@ -55,7 +57,7 @@ async function getGroupMembers(token, groupId) {
   return users;
 }
 
-function loadOverrides() {
+function loadFileOverrides() {
   try {
     const filePath = path.join(__dirname, 'overrides.json');
     const raw = fs.readFileSync(filePath, 'utf8');
@@ -68,6 +70,35 @@ function loadOverrides() {
         title: emp.title || '',
         email: emp.email || ''
       };
+    });
+    return map;
+  } catch (e) {
+    return {};
+  }
+}
+
+async function loadSharePointOverrides(token) {
+  try {
+    const siteRes = await fetch(
+      `https://graph.microsoft.com/v1.0/sites/${SHAREPOINT_HOST}:${SITE_PATH}`,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    const siteId = (await siteRes.json()).id;
+    const listUrl = `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/EmployeeOverrides`;
+    const res = await fetch(`${listUrl}/items?$expand=fields&$select=fields&$top=999`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const data = await res.json();
+    const map = {};
+    (data.value || []).forEach(item => {
+      const name = item.fields.Title;
+      if (name) {
+        map[name.toLowerCase().trim()] = {
+          profileUrl: item.fields.ProfileURL || '',
+          title: item.fields.JobTitle || '',
+          email: item.fields.Email || ''
+        };
+      }
     });
     return map;
   } catch (e) {
@@ -91,7 +122,16 @@ module.exports = async function (context, req) {
     const token = await getToken();
     const groupId = await getGroupId(token);
     const users = await getGroupMembers(token, groupId);
-    const overrides = loadOverrides();
+    const fileOverrides = loadFileOverrides();
+    const spOverrides = await loadSharePointOverrides(token);
+    // SharePoint overrides take priority over file overrides
+    const overrides = { ...fileOverrides };
+    for (const [key, val] of Object.entries(spOverrides)) {
+      overrides[key] = { ...(overrides[key] || {}), ...val };
+      // Only override non-empty values from SharePoint
+      if (!val.profileUrl && overrides[key].profileUrl) overrides[key].profileUrl = fileOverrides[key]?.profileUrl || '';
+      if (!val.title && overrides[key].title) overrides[key].title = fileOverrides[key]?.title || '';
+    }
 
     const employees = users
       .filter(u => u.displayName && u.mail)

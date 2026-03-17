@@ -405,7 +405,7 @@ function closeModal() {
   modalEmpId = null;
 }
 
-function saveModal() {
+async function saveModal() {
   if (!modalEmpId) return;
   const emp = employees.find(e => e.id === modalEmpId);
   if (!emp) return;
@@ -414,6 +414,22 @@ function saveModal() {
   emp.email = document.getElementById('emp-modal-email-input').value.trim();
   emp.profileUrl = document.getElementById('emp-modal-url-input').value.trim();
   profileOverrides[emp.id] = emp.profileUrl;
+
+  // Save to SharePoint
+  try {
+    await fetch('/api/overrides', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: emp.name,
+        profileUrl: emp.profileUrl,
+        title: emp.title,
+        email: emp.email
+      })
+    });
+  } catch (e) {
+    console.error('Failed to save override:', e);
+  }
 
   closeModal();
 }
