@@ -91,9 +91,10 @@ function renderNameTags(svg, employees) {
     const firstName = parts[0];
     const lastName = parts.slice(1).join(' ');
 
-    const fontSize = bbox.height * 0.3;
-    const singleLineWidth = fullName.length * fontSize * 0.62;
+    const baseFontSize = bbox.height * 0.3;
+    const singleLineWidth = fullName.length * baseFontSize * 0.62;
     const useSingleLine = !lastName || singleLineWidth <= bbox.width * 0.9;
+    const fontSize = useSingleLine ? bbox.height * 0.45 : baseFontSize;
     const lineHeight = fontSize * 1.3;
 
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
