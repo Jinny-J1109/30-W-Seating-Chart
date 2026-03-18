@@ -72,11 +72,20 @@ async function init() {
   });
 
   // Modal close handlers
-  document.getElementById('emp-modal-close').addEventListener('click', closeModal);
-  document.getElementById('emp-modal-overlay').addEventListener('click', e => {
+  document.getElementById('emp-modal-close').addEventListener('mousedown', e => {
+    e.stopPropagation();
+    closeModal();
+  });
+  document.getElementById('emp-modal-overlay').addEventListener('mousedown', e => {
     if (e.target === e.currentTarget) closeModal();
   });
-  document.getElementById('emp-modal-save').addEventListener('click', saveModal);
+  document.getElementById('emp-modal-save').addEventListener('mousedown', e => {
+    e.stopPropagation();
+    saveModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modalEmpId) closeModal();
+  });
 }
 
 function getDeskAtPoint(x, y) {
@@ -405,7 +414,7 @@ function closeModal() {
   modalEmpId = null;
 }
 
-async function saveModal() {
+function saveModal() {
   if (!modalEmpId) return;
   const emp = employees.find(e => e.id === modalEmpId);
   if (!emp) return;
@@ -415,23 +424,19 @@ async function saveModal() {
   emp.profileUrl = document.getElementById('emp-modal-url-input').value.trim();
   profileOverrides[emp.id] = emp.profileUrl;
 
-  // Save to SharePoint
-  try {
-    await fetch('/api/overrides', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: emp.name,
-        profileUrl: emp.profileUrl,
-        title: emp.title,
-        email: emp.email
-      })
-    });
-  } catch (e) {
-    console.error('Failed to save override:', e);
-  }
-
   closeModal();
+
+  // Save to SharePoint in background
+  fetch('/api/overrides', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: emp.name,
+      profileUrl: emp.profileUrl,
+      title: emp.title,
+      email: emp.email
+    })
+  }).catch(e => console.error('Failed to save override:', e));
 }
 
 function exportJSON() {
