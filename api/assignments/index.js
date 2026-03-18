@@ -56,16 +56,20 @@ module.exports = async function (context, req) {
 
       const assignments = {};
       let lastUpdated = null;
+      let lastUpdatedBy = null;
       (data.value || []).forEach(item => {
         const deskId = item.fields.DeskID || item.fields.Title;
         const empId = item.fields.EmployeeID;
         if (deskId === '_lastUpdated') {
           lastUpdated = empId;
+        } else if (deskId === '_lastUpdatedBy') {
+          lastUpdatedBy = empId;
         } else if (deskId && empId) {
           assignments[deskId] = empId;
         }
       });
       if (lastUpdated) assignments._lastUpdated = lastUpdated;
+      if (lastUpdatedBy) assignments._lastUpdatedBy = lastUpdatedBy;
 
       context.res = { status: 200, headers, body: JSON.stringify(assignments) };
       return;

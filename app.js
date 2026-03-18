@@ -32,7 +32,9 @@ async function init() {
     if (saved) assignments = JSON.parse(saved);
   }
   const lastUpdated = assignments._lastUpdated || null;
+  const lastUpdatedBy = assignments._lastUpdatedBy || null;
   delete assignments._lastUpdated;
+  delete assignments._lastUpdatedBy;
 
   employees.forEach(emp => {
     emp.desk = Object.keys(assignments).find(d => assignments[d] === emp.id) || null;
@@ -40,8 +42,9 @@ async function init() {
 
   if (lastUpdated) {
     const d = new Date(lastUpdated);
-    document.getElementById('last-updated').textContent =
-      `Last updated: ${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} at ${d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`;
+    let text = `Last updated: ${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} at ${d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`;
+    if (lastUpdatedBy) text += ` by ${lastUpdatedBy}`;
+    document.getElementById('last-updated').textContent = text;
   }
 
   const wrapper = document.getElementById('svg-wrapper');

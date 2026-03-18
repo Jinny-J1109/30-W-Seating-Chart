@@ -380,7 +380,24 @@ async function saveChanges() {
   const msg = document.getElementById('status-msg');
   msg.textContent = 'Saving...';
   try {
-    const payload = { ...assignments, _lastUpdated: new Date().toISOString() };
+    // Get logged-in user's name from Azure Static Web Apps auth
+    let updatedBy = '';
+    try {
+      const authRes = await fetch('/.auth/me');
+      if (authRes.ok) {
+        const authData = await authRes.json();
+        const principal = authData.clientPrincipal;
+        if (principal) {
+          updatedBy = principal.userDetails || '';
+        }
+      }
+    } catch (e) { /* not authenticated or local dev */ }
+
+    const payload = {
+      ...assignments,
+      _lastUpdated: new Date().toISOString(),
+      _lastUpdatedBy: updatedBy
+    };
     const res = await fetch('/api/assignments', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

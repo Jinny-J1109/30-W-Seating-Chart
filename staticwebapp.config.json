@@ -1,0 +1,23 @@
+{
+  "routes": [
+    { "route": "/admin.html", "allowedRoles": ["admin"] },
+    { "route": "/api/assignments", "methods": ["POST"], "allowedRoles": ["admin"] },
+    { "route": "/api/overrides", "methods": ["POST"], "allowedRoles": ["admin"] }
+  ],
+  "responseOverrides": {
+    "401": {
+      "redirect": "/.auth/login/aad",
+      "statusCode": 302
+    }
+  },
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/9a5a5d8e-48a0-4dc9-988e-8867bf4b5772/v2.0",
+          "clientIdSettingName": "CLIENT_ID"
+        }
+      }
+    }
+  }
+}
