@@ -66,7 +66,6 @@ async function init() {
   } catch (e) { /* no overrides file */ }
 
   document.getElementById('btn-save').addEventListener('click', saveChanges);
-  document.getElementById('btn-export').addEventListener('click', exportJSON);
   document.getElementById('employee-search').addEventListener('input', e => {
     renderSidebar(e.target.value.toLowerCase().trim());
   });
@@ -229,7 +228,9 @@ function renderSidebar(filter = '') {
 
     // Click edit button to open edit modal
     const editBtn = item.querySelector('.emp-edit-btn');
+    editBtn.draggable = false;
     editBtn.addEventListener('mousedown', e => e.stopPropagation());
+    editBtn.addEventListener('dragstart', e => e.preventDefault());
     editBtn.addEventListener('click', e => {
       e.stopPropagation();
       e.preventDefault();
