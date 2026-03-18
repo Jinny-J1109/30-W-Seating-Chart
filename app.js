@@ -85,24 +85,14 @@ function renderNameTags(svg, employees) {
     g.classList.add('name-tag');
     g.setAttribute('data-emp-id', emp.id);
 
-    // Font size capped to fit within desk dimensions
+    // Consistent font size based on desk height, allow text to overflow horizontally
     const fullName = emp.name.trim();
     const parts = fullName.split(' ');
     const firstName = parts[0];
     const lastName = parts.slice(1).join(' ');
 
-    // Compute best font size for each layout, pick whichever is larger
-    const longestPart = Math.max(firstName.length, lastName.length || 0);
-    const fontSizeTwoLine = lastName ? Math.min(
-      bbox.height * 0.35,
-      bbox.width * 0.72 / (longestPart * 0.62)
-    ) : 0;
-    const fontSizeOneLine = Math.min(
-      bbox.height * 0.45,
-      bbox.width * 0.80 / (fullName.length * 0.62)
-    );
-    const useSingleLine = !lastName || fontSizeOneLine >= fontSizeTwoLine;
-    const fontSize = useSingleLine ? fontSizeOneLine : fontSizeTwoLine;
+    const fontSize = bbox.height * 0.3;
+    const useSingleLine = !lastName;
     const lineHeight = fontSize * 1.3;
 
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
